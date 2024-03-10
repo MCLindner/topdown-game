@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://bdv2gcbxgto6i"]
+
+[ext_resource type="Texture2D" uid="uid://bfk7mvpjm4mnm" path="res://art/enemyFlyingAlt_1.png" id="1_qk1s5"]
+[ext_resource type="Script" path="res://Mob.gd" id="1_ypu6j"]
+[ext_resource type="Texture2D" uid="uid://da37c1cdp4ou3" path="res://art/enemyFlyingAlt_2.png" id="2_w8jvf"]
+[ext_resource type="Texture2D" uid="uid://7mgwbm1q2pxd" path="res://art/enemySwimming_1.png" id="3_d2k5l"]
+[ext_resource type="Texture2D" uid="uid://cbskd8ni35bl" path="res://art/enemySwimming_2.png" id="4_agoa8"]
+[ext_resource type="Texture2D" uid="uid://dcdfsjc1vhlse" path="res://art/enemyWalking_1.png" id="5_2ckw4"]
+[ext_resource type="Texture2D" uid="uid://ea5eevctpu5q" path="res://art/enemyWalking_2.png" id="6_eiht1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_myq24"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qk1s5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_w8jvf")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_d2k5l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_agoa8")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_2ckw4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_eiht1")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oirj7"]
+radius = 34.0
+height = 82.0
+
+[node name="Mob" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_ypu6j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_myq24")
+animation = &"fly"
+frame_progress = 0.0898869
+metadata/_edit_group_ = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." groups=["mobs"]]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.1, 0.1)
+shape = SubResource("CapsuleShape2D_oirj7")
+metadata/_edit_group_ = true
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
