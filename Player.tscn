@@ -49,4 +49,5 @@ shape = SubResource("CapsuleShape2D_2a5x0")
 
 [node name="InvulnTimer" type="Timer" parent="."]
 
+[connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="timeout" from="InvulnTimer" to="." method="_on_invuln_timer_timeout"]

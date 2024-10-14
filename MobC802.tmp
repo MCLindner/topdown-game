@@ -52,8 +52,8 @@ height = 120.0
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_ypu6j")
-speed = 75
-accel = 5
+speed = 100
+accel = 50
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
