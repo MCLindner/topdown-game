@@ -1,11 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://k720sxsqxb7"]
+[gd_scene load_steps=8 format=3 uid="uid://k720sxsqxb7"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_w00jq"]
+[ext_resource type="Texture2D" uid="uid://d4f8326alfinq" path="res://art/The Roguelike 1-9 Alpha - Copy.png" id="2_qsdqa"]
 [ext_resource type="Texture2D" uid="uid://3gn1h8b65a2g" path="res://art/playerwizard_walk1.png" id="4_2rb4y"]
 [ext_resource type="Texture2D" uid="uid://do516iprptk6j" path="res://art/playerwizard_walk2.png" id="5_8ecjg"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5nx8"]
+atlas = ExtResource("2_qsdqa")
+region = Rect2(112, 544, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_qwf17"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5nx8")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_2rb4y")
@@ -41,13 +54,15 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, 0)
 sprite_frames = SubResource("SpriteFrames_qwf17")
-animation = &"up"
+animation = &"hit"
+frame_progress = 0.538727
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_2a5x0")
 
 [node name="InvulnTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="timeout" from="InvulnTimer" to="." method="_on_invuln_timer_timeout"]
