@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bw3swncialdc3"]
+[gd_scene load_steps=6 format=3 uid="uid://bw3swncialdc3"]
 
 [ext_resource type="Script" path="res://HUD.gd" id="1_0p31g"]
-[ext_resource type="FontFile" uid="uid://bsl6ang82iqtd" path="res://fonts/Xolonium-Regular.ttf" id="2_sw2y4"]
+[ext_resource type="FontFile" uid="uid://ynh23aa7s6ew" path="res://fonts/argan-font/ArganRegular-j9V4y.ttf" id="2_crxvu"]
+[ext_resource type="FontFile" uid="uid://cul5tjfpb2hot" path="res://fonts/pcsuperion-font/Pcsuperiondemo-zrRD4.otf" id="3_n1yqs"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_v4r82"]
 action = &"start_game"
@@ -20,7 +21,7 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 78.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_sw2y4")
+theme_override_fonts/font = ExtResource("2_crxvu")
 theme_override_font_sizes/font_size = 64
 text = "0"
 horizontal_alignment = 1
@@ -33,14 +34,15 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -240.0
-offset_top = -120.0
+offset_top = -468.0
 offset_right = 240.0
-offset_bottom = 120.0
+offset_bottom = 424.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_sw2y4")
-theme_override_font_sizes/font_size = 64
-text = "Dodge the Creeps!"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_n1yqs")
+theme_override_font_sizes/font_size = 175
+text = "Beyond the Great Vast Forest"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -57,7 +59,7 @@ offset_right = 111.5
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("2_sw2y4")
+theme_override_fonts/font = ExtResource("2_crxvu")
 theme_override_font_sizes/font_size = 64
 shortcut = SubResource("Shortcut_jkje5")
 text = "Start"
