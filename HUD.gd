@@ -42,3 +42,11 @@ func _on_start_button_pressed():
 
 func _on_message_timer_timeout():
 	$Message.hide()
+
+
+func _on_player_hit(health) -> void:
+	$HealthLabel.text = str(health)
+
+
+func _on_player_game_over(player_max_health) -> void:
+	$HealthLabel.text = str(player_max_health)

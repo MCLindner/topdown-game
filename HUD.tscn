@@ -69,8 +69,11 @@ wait_time = 2.0
 one_shot = true
 
 [node name="HealthLabel" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 48.0
+offset_top = 32.0
+offset_right = 192.0
+offset_bottom = 64.0
+text = "3"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

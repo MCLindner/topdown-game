@@ -1081,6 +1081,8 @@ tile_map_data = PackedByteArray("AAAOABsAAQAEAA0AAAAOABwAAQAEAA0AAAAOAB0AAQAEAA0
 tile_set = SubResource("TileSet_qipok")
 
 [connection signal="game_over" from="Player" to="." method="game_over"]
+[connection signal="game_over" from="Player" to="HUD" method="_on_player_game_over"]
+[connection signal="hit" from="Player" to="HUD" method="_on_player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

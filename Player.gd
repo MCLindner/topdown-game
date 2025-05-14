@@ -5,6 +5,7 @@ signal game_over
 
 @export var speed = 100 # How fast the player will move (pixels/sec).
 @export var player_health = 3 # Player health duh
+var player_max_health = player_health
 var screen_size # Size of the game window.
 
 # Called when the node enters the scene tree for the first time.
@@ -15,7 +16,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var velocity = Vector2.ZERO # The player's movement vector
+	#var velocity = Vector2.ZERO # The player's movement vector
+	velocity.x = 0
+	velocity.y = 0
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
 	if Input.is_action_pressed("move_left"):
@@ -55,13 +58,14 @@ func handle_collisions():
 			var collision = get_slide_collision(i)
 			print("I collided with ", collision.get_collider().name)
 			if collision.get_collider().name.begins_with("@RigidBody2D") == true:
-				hit.emit() # HUD needs to receive this signal
+				# HUD needs to receive this signal
 				player_health -= 1
+				hit.emit(player_health) 
 				print(player_health)
 				$CollisionShape2D.set_deferred("disabled", true)		
 				
 				if player_health == 0:
-					game_over.emit()
+					game_over.emit(player_max_health)
 					# hide() # Player disappears after being hit.
 					# Must be deferred as we can't change physics properties on a physics callback.
 					# Maybe disable the hitbox for a half a second for i frames
@@ -71,7 +75,12 @@ func handle_collisions():
 				$InvulnTimer.start()
 				# use $CollisionShape2D.set_deferred("disabled", true) perhaps
 				# this needs to check for player health
-
+				
+# make an area2d, get the node, get the enemies colliding with area2d, determine closesst or get overlapping
+# or use get overlapping
+# not sure if using a colision shape will work
+func get_nearest_target():
+	return 0
 				
 		
 
@@ -87,7 +96,7 @@ func handle_collisions():
 func start(pos):
 	velocity.x = 0
 	velocity.y = 0
-	player_health = 3
+	#player_health = player_max_health
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
